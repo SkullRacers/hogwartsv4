@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/bc66f95493.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="Hogwarts_emblem.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #credits {
+        background-color: white;
+        color: green;
+        padding: 8px;
+        border-radius: 12px;
+        width: fit-content;
+        transition: 1s all;
+        font-size: 22px;
+      }
+      #name {
+        color: goldenrod;
+      }
+      #house {
+        color: crimson;
+      }
+      body {
+        font-family: "Henny Penny";
+      }
+      #Sorted {
+        justify-content: center;
+        height: 50vh;
+        width: fit-content;
+        position: absolute;
+        background-color: white;
+        border-radius: 44px;
+        padding: 45px;
+        left: 330px;
+        scale: 0;
+        transition: 1s all;
+        top: 105px;
+        border: 4px solid red;
+        z-index: 999;
+      }
+      #hat {
+        display: flex;
+        justify-content: center;
+      }
+      #hat img {
+        height: 300px;
+        width: 400px;
+      }
+      #Loader {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+      }
+      #Loader img {
+        animation: pulse 1s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1.1);
+        }
+        50% {
+          transform: scale(1);
+        }
+      }
+      body {
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+      }
+      #main {
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        background: url("Bg.jfif");
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: none;
+      }
+      #cursor {
+        display: none;
+        z-index: 1;
+      }
+
+      #cursor img {
+        height: 100px;
+        width: 100px;
+        position: absolute;
+        z-index: 1;
+      }
+
+      #nameOfStudent {
+        border-radius: 56px;
+        padding: 17px;
+        border: 2px solid purple;
+        width: 369px;
+      }
+
+      #Input {
+        display: flex;
+        justify-content: center;
+        margin-top: 12px;
+        z-index: 3;
+      }
+      #sortStudent {
+        text-decoration: none;
+        background-color: white;
+        padding: 12px;
+        border-radius: 12px;
+        font-size: 23px;
+        cursor: pointer;
+        z-index: 3;
+      }
+      #sort {
+        display: flex;
+        margin-top: 12px;
+        justify-content: center;
+        z-index: 3;
+      }
+      #Frills {
+        position: absolute;
+        top: 0;
+        left: 180px;
+        z-index: 1000;
+        display: none;
+      }
+      #emblem {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 42px;
+      }
+      #back_btn {
+        background-color: bisque;
+        padding: 9px;
+        border-radius: 12px;
+      }
+      #mc {
+        position: absolute;
+        left: 0;
+        top: 147px;
+        height: 300px;
+        width: 300px;
+      }
+    </style>
+    <title>Hogwarts House Sorting Ceremony</title>
+  </head>
+  <body>
+    <audio id = "bg_noise">
+      <source src = "bg_noise.mp3">
+    </audio>
+    <div id="Loader">
+      <img src="Hogwarts_emblem.png" alt="" />
+    </div>
+    
+    <div id="cursor">
+      <img src="wand.png" alt="" />
+    </div>
+    <div id="main">
+      <img src="mcgongall.png" alt="" id="mc">
+      <div id="Frills">
+        <img src="Frills.png" alt="">
+        <img src="Frills.png" alt="">
+        <img src="Frills.png" alt="">
+      </div>
+      <div id="Sorted">
+        <h1 id="sorting">
+          <i class="fa-solid fa-arrow-left fa-beat" id="back_btn"></i>
+          <span id="name">Name</span> shall be in
+          <span id="house">Hufflepuff</span>
+        </h1>
+        <div id="emblem">
+          
+        </div>
+      </div>
+      <div id="hat">
+        <img src="sorting_hat.png" alt="" />
+      </div>
+      <div id="Input">
+        <input
+          type="text"
+          id="nameOfStudent"
+          placeholder="Names of wizards/witches (seperate the names with spaces)"
+        />
+      </div>
+      <div id="sort">
+        <a id="sortStudent" onclick="sortStudent()">Sort!</a>
+      </div>
+    </div>
+    <script src="index.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
+</html>
